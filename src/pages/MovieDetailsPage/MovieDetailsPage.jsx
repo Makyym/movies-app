@@ -13,7 +13,6 @@ const MovieDetailsPage = () => {
     const goBackLink = useRef(location.state ?? "/movies");
 
     useEffect(() => {
-        setMovie(movieId);
         const getData = async () => {
             try {
                 setLoading(true);
@@ -53,8 +52,8 @@ const MovieDetailsPage = () => {
                 <p>Users score: {vote_average.toFixed(1)}</p>
                 <h3>Additional information</h3>
                 <ul className={s.list}>
-                    <li><Link to="Cast">Cast</Link></li>
-                    <li><Link to="Reviews">Reviews</Link></li>
+                    <li><Link to="cast">Cast</Link></li>
+                    <li><Link to="reviews">Reviews</Link></li>
                 </ul>
                 <Suspense fallback={<Loader />}>
                     <Outlet />

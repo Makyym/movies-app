@@ -6,8 +6,10 @@ import { useSearchParams } from "react-router-dom";
 import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
-    const [movieList, setMovieList] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    const paramsQuery = searchParams.get('query') ?? "";
+    const [searchMovie, setSearchMovie] = useState(paramsQuery)
+    const [movieList, setMovieList] = useState([]);
     
     const fetchMovieList = async (searchQuery) => {
         const response = await fetchMovieByQuery(searchQuery);
@@ -17,19 +19,19 @@ const MoviesPage = () => {
             return;
         }
         searchParams.set('query', searchQuery);
+        setSearchMovie(searchQuery);
         setSearchParams(searchParams);
         setMovieList(results);
     }
 
     useEffect(() => {
-        const paramsQuery = searchParams.get('query') ?? "";
         const movieList = async () => {
-            const response = await fetchMovieByQuery(paramsQuery);
+            const response = await fetchMovieByQuery(searchMovie);
             const { data: { results } } = response;
             setMovieList(results);
         }
         movieList();
-    }, [searchParams]);
+    }, [searchMovie]);
 
     return (
         <div>
