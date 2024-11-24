@@ -1,0 +1,26 @@
+.form {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.field {
+    border-radius: 10px;
+    padding: 2px;
+    outline: none;
+    color: white;
+    border: 1px solid transparent;
+    transition: border-color 0.25s;
+    text-align: center;
+    font-size: 24px;
+}
+
+.field:hover {
+    border-color: #646cff;
+}
+
+.field:focus {
+    border-color: #646cff;
+    box-shadow: 0 0 5px #646cff;
+}
