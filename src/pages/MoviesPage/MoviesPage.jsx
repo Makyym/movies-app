@@ -8,30 +8,28 @@ import s from "./MoviesPage.module.css";
 const MoviesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const paramsQuery = searchParams.get('query') ?? "";
-    const [searchMovie, setSearchMovie] = useState(paramsQuery)
     const [movieList, setMovieList] = useState([]);
     
-    const fetchMovieList = async (searchQuery) => {
-        const response = await fetchMovieByQuery(searchQuery);
-        const { data: { results } } = response;
-        if (!results.length) {
-            setMovieList(null);
-            return;
-        }
+    const fetchMovieList = (searchQuery) => {
         searchParams.set('query', searchQuery);
-        setSearchMovie(searchQuery);
         setSearchParams(searchParams);
-        setMovieList(results);
     }
 
     useEffect(() => {
         const movieList = async () => {
-            const response = await fetchMovieByQuery(searchMovie);
+            const response = await fetchMovieByQuery(paramsQuery);
             const { data: { results } } = response;
-            setMovieList(results);
+            if (!results.length) {
+            setMovieList(null);
+            return;
         }
+            setMovieList(results);
+        };
+        if (paramsQuery === "") {
+            return;
+        };
         movieList();
-    }, [searchMovie]);
+    }, [paramsQuery]);
 
     return (
         <div>
