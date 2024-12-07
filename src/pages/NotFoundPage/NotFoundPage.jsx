@@ -10,14 +10,16 @@ const NotFoundPage = () => {
         const interval = setInterval(() => {
             setCounter(prevCount => prevCount - 1);
         }, 1000);
-        const timer = setTimeout(() => {
+        if (counter === 0) {
             navigate('/');
-        }, 10000);
+        }
+        // const timer = setTimeout(() => {
+        //     navigate('/');
+        // }, 10000);
         return () => {
             clearInterval(interval);
-            clearTimeout(timer);
         };
-    }, [navigate]);
+    }, [navigate, counter]);
     return (
         <div>
             <p className={s.text}>
