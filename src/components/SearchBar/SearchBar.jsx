@@ -21,7 +21,7 @@ const SearchBar = ({onSubmit}) => {
             <Formik onSubmit={handleSubmit} initialValues={initialValues}>
                 <Form className={s.form}>
                     <Field name="query" placeholder="Movie search" className={s.field} />
-                    <button type="submit">Search</button>
+                    <button type="submit" className={s.button}>Search</button>
                 </Form>
             </Formik>
         </div>

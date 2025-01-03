@@ -13,7 +13,7 @@
     border: 1px solid transparent;
     transition: border-color 0.25s;
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .field:hover {
@@ -23,4 +23,8 @@
 .field:focus {
     border-color: #646cff;
     box-shadow: 0 0 5px #646cff;
+}
+
+.button {
+    font-size: 30px;
 }

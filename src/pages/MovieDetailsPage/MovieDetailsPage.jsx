@@ -38,29 +38,33 @@ const MovieDetailsPage = () => {
                     <Link to={goBackLink.current} className={s.goBack}>Go back</Link>
                     <h2 className={s.title}>{original_title}</h2>
                 </div>
-                <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
-                <h3>Overview</h3>
-                <p>{overview}</p>
-                <h3>Genres</h3>
-                {genres && <ul className={s.list}>
-                    {genres.map((genre) => {
-                        return (
-                            <li key={genre.id}>{genre.name}</li>
-                        )
-                    })}
-                </ul>}
-                <p>Users score: {vote_average.toFixed(1)}</p>
-                <h3>Additional information</h3>
-                <ul className={s.list}>
-                    <li><Link to="cast">Cast</Link></li>
-                    <li><Link to="reviews">Reviews</Link></li>
-                </ul>
-                <Suspense fallback={<Loader />}>
-                    <Outlet />
-                </Suspense>
-            </div>}
-        </div>
-    )
-}
+                <img className={s.img} src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={original_title} />
+                                <h3 className={s.overviewTitle}>Overview</h3>
+                                <p className={s.overviewText}>{overview}</p>
+                            <div className={s.div}>
+                                <div className={s.genres}>
+                                    <h3>Genres:</h3>
+                                    {genres && <ul className={s.list}>
+                                        {genres.map((genre) => {
+                                            return (
+                                            <li key={genre.id}>{genre.name}</li>
+                                        )
+                                        })}
+                                        </ul>}
+                                </div>
+                                <h3>Users score {vote_average.toFixed(1)}</h3>
+                            </div>
+                                <h3>Additional information</h3>
+                                <ul className={s.list}>
+                                    <li><Link to="cast">Cast</Link></li>
+                                    <li><Link to="reviews">Reviews</Link></li>
+                                </ul>
+                                <Suspense fallback={<Loader />}>
+                                <Outlet />
+                                </Suspense>
+                                </div>}
+                                </div>
+                                )
+                            };
 
 export default MovieDetailsPage
