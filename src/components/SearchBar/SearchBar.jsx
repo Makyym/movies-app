@@ -1,11 +1,20 @@
 import { Field, Form, Formik } from "formik"
 import s from "./SearchBar.module.css"
+import toast from "react-hot-toast";
+
+const style =  {
+    backgroundColor: 'rgb(157, 3, 3)',
+    width: '1000px',
+    height: '100px',
+    fontSize: '24px',
+    color: 'white',
+};
 
 const SearchBar = ({onSubmit}) => {
     const handleSubmit = (values, options) => {
         const searchQuery = values.query.trim().toLowerCase();
         if (searchQuery === "") {
-            alert("Nothing to search, please enter a query!");
+            toast.error("Nothing to search, please enter a query!", {style: style, icon: '',});
             return;
         }
         onSubmit(searchQuery)
