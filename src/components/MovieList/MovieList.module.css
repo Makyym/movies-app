@@ -6,26 +6,27 @@
     gap: 40px;
     padding: 15px;
     margin: 0;
+    justify-content: center;
 }
 
 .text {
-    border: 2px solid #333333;
+    border: 2px solid #808080;
     border-top: none;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 20px;
     margin: 0;
     padding: 15px;
     font-size: 30px;
-    background-color: #333333;
-    width: 500px;
+    background-color: rgb(30, 30, 30);
+    width: 504px;
     display: inline-block;
     height: 110px;
-    text-align: center;
     box-sizing: border-box;
+    color: white;
 }
 
 .text:hover {
-    text-shadow: 0 0 20px #646cff;
+    text-shadow: 0 0 20px white;
 }
 
 .item {
@@ -33,5 +34,7 @@
 }
 
 .img {
-    margin-bottom: -6px;
+    margin-bottom: -8px;
+    border: 2px solid #808080;
+    border-bottom: none;
 }

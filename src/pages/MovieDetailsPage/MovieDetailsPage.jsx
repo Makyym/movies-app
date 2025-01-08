@@ -27,7 +27,7 @@ const MovieDetailsPage = () => {
         getData();
     }, [movieId]);
     if (!movie) return;
-    const { original_title, overview, vote_average, poster_path, genres} = movie;
+    const { original_title, overview, vote_average, poster_path, genres, release_date} = movie;
     return (
         <div>
             {error && (
@@ -43,8 +43,8 @@ const MovieDetailsPage = () => {
                                 <p className={s.overviewText}>{overview}</p>
                             <div className={s.div}>
                                 <div className={s.genres}>
-                                    <h3>Genres:</h3>
-                                    {genres && <ul className={s.list}>
+                                    <h3>Genres</h3>
+                                    {genres && <ul className={s.genresUl}>
                                         {genres.map((genre) => {
                                             return (
                                             <li key={genre.id}>{genre.name}</li>
@@ -52,7 +52,14 @@ const MovieDetailsPage = () => {
                                         })}
                                         </ul>}
                                 </div>
-                                <h3>Users score {vote_average.toFixed(1)}</h3>
+                                <div className={s.genres}>
+                                    <h3>Release date</h3>
+                                    <p>{release_date}</p>
+                                </div>
+                                <div className={s.genres}>
+                                    <h3>Users score</h3>
+                                    <p>{vote_average.toFixed(1)}</p>
+                                </div>
                             </div>
                                 <h3>Additional information</h3>
                                 <ul className={s.list}>
